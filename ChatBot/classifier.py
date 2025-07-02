@@ -1,30 +1,15 @@
-﻿from sentence_transformers import SentenceTransformer
-import csv
-from sklearn.tree import DecisionTreeClassifier
+﻿from sklearn.tree import DecisionTreeClassifier
 import pickle
-		
-clf = DecisionTreeClassifier(random_state=1)
-data = []
-X = []
-Y = []
+from sentence_transformers import SentenceTransformer
 
+model = SentenceTransformer("BAAI/bge-m3")
 
-with open('embedded_data.csv', newline='') as csvfile:
-	reader = csv.reader(csvfile, delimiter=',')
-	for row in reader:
-		data.append(row)
-		
-data = data[1::]
+with open('../PickleFiles/positive_sentiment.pickle', 'rb') as handle:
+    positive_classifier = pickle.load(handle)
 
-for datum in data:
-	X.append(datum[2::])
-	Y.append(datum[1])
-	
-	
-clf.fit(X,Y)
+with open('../PickleFiles/aggressive_sentiment.pickle', 'rb') as handle:
+    aggressive_classifier = pickle.load(handle)
 
-with open('filename.pickle', 'wb') as handle:
-	pickle.dump(clf, handle, protocol=pickle.HIGHEST_PROTOCOL)
-
-with open('filename.pickle', 'rb') as handle:
-    b = pickle.load(handle)
+embedding = model.encode("Hello!")
+print(positive_classifier.predict([embedding]))
+print(aggressive_classifier.predict([embedding]))
