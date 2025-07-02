@@ -42,7 +42,6 @@ emotions_positivity_mapping = {
 	"ashamed": False,
 	"grateful": True,
 	"faithful": False
-	
 	}
 
 emotions_aggressive_mapping = {
@@ -77,15 +76,50 @@ emotions_aggressive_mapping = {
 	"disappointed": False,
 	"annoyed": True,
 	"ashamed": False,
-	"grateful": True,
+	"grateful": False,
 	"faithful": False
-	
+	}
+
+emotions_negativity_mapping = {
+	"tone": False,
+	"hopeful": False,
+	"terrified": True,
+	"sentimental": False,
+	"trusting": False,
+	"anticipating": False,
+	"embarrassed": True,
+	"guilty": True,
+	"afraid": True,
+	"sad": True,
+	"surprised": False,
+	"anxious": True,
+	"lonely": True,
+	"nostalgic": False,
+	"confident": False,
+	"impressed": False,
+	"apprehensive": True,
+	"disgusted": False,
+	"excited": False,
+	"furious": False,
+	"content": False,
+	"joyful": False,
+	"angry": False,
+	"prepared": False,
+	"proud": False,
+	"jealous": False,
+	"devastated": False,
+	"caring": False,
+	"disappointed": True,
+	"annoyed": False,
+	"ashamed": True,
+	"grateful": False,
+	"faithful": False
 	}
 
 with open('../DataSource/embedded_data.csv', newline='') as csvfile:
 	reader = csv.reader(csvfile, delimiter=',')
 	for row in reader:
-		row[1] = emotions_aggressive_mapping[row[1]]
+		row[1] = emotions_negativity_mapping[row[1]]
 		data.append(row)
 		
 data = data[1::]
@@ -97,5 +131,5 @@ for datum in data:
 	
 clf.fit(X,Y)
 
-with open('../PickleFiles/aggressive_sentiment.pickle', 'wb') as handle:
+with open('../PickleFiles/negative_sentiment.pickle', 'wb') as handle:
 	pickle.dump(clf, handle, protocol=pickle.HIGHEST_PROTOCOL)
