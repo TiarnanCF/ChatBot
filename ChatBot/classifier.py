@@ -1,23 +1,7 @@
 ﻿from sentence_transformers import SentenceTransformer
 import csv
 from sklearn.tree import DecisionTreeClassifier
-
-model = SentenceTransformer("BAAI/bge-m3")
-
-with open('text_messages_with_tone.csv', newline='') as csvfile:
-	reader = csv.reader(csvfile, delimiter=',')
-	for row in reader:
-		synthetic_data.append({"Message": row[0], "Tone": row[1], "Embedding": model.encode(row[0])})
-		
-csv_data = []
-
-for datum in synthetic_data:
-	csv_data.append([datum["Message"], datum["Tone"]] + datum["Embedding"].tolist())
-	
-with open('embedded_data.csv', 'w', newline='') as csvfile:
-	writer = csv.writer(csvfile)
-	for row in csv_data:
-		writer.writerow(row)
+import pickle
 		
 clf = DecisionTreeClassifier(random_state=1)
 data = []
@@ -38,3 +22,9 @@ for datum in data:
 	
 	
 clf.fit(X,Y)
+
+with open('filename.pickle', 'wb') as handle:
+	pickle.dump(clf, handle, protocol=pickle.HIGHEST_PROTOCOL)
+
+with open('filename.pickle', 'rb') as handle:
+    b = pickle.load(handle)
