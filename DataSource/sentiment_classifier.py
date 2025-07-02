@@ -60,5 +60,5 @@ for datum in data:
 	
 clf.fit(X,Y)
 
-with open('filename_2.pickle', 'wb') as handle:
+with open('sentiment.pickle', 'wb') as handle:
 	pickle.dump(clf, handle, protocol=pickle.HIGHEST_PROTOCOL)
