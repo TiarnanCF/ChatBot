@@ -6,7 +6,7 @@ Control ChatBot responses based on classification of the user's query response. 
 
 The work around that is proposed is that we control the ChatBot's response based on custom classifiers. The basic ChatBot will have a built-in option for an alternative response for messages classified as having "negative" sentiment. The project will be LLM and Embedding model agnostic. By default open source models will be used but those can be override by the ChatBotBuilder.
 
-
+> *If you have suggestions, please start a [Discussion](https://github.com/TiarnanCF/ChatBot/discussions)!*
 
 ## 🚀 Usage instructions
 
@@ -15,7 +15,5 @@ The work around that is proposed is that we control the ChatBot's response based
 ## ⬇️ Installation instructions
 
 > *TO DO*
-
-> *If you have suggestions, please start a [Discussion](https://github.com/TiarnanCF/ChatBot/discussions)!*
 
 ## 📖 Further reading
