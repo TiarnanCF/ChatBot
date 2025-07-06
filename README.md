@@ -12,6 +12,6 @@
 
 > *TO DO*
 
-> *If you found this guide insightful or if you have suggestions, please start a [Discussion](https://github.com/TiarnanCF/ChatBot/discussions)!*
+> *If you have suggestions, please start a [Discussion](https://github.com/TiarnanCF/ChatBot/discussions)!*
 
 ## 📖 Further reading
