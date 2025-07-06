@@ -32,7 +32,7 @@ class ChatBot:
 
     def query(self, query):
         if self.is_negative_query(query):
-            return "I just wanted to check in to make sure you were okay"
+            return "I think that there might be more going on behind this question. Would you like to talk about it?"
 
         return self.response_functions["standard"](query)
 
@@ -83,6 +83,7 @@ class ChatBotBuilder:
 
         return ChatBot(embedding_function, response_functions, negative_classifier_function)
 
-chat_bot_builder = ChatBotBuilder()
-chat_bot = chat_bot_builder.build_chatbot()
-print(chat_bot.query("What is the tallest building in NYC?"))
+if __name__ == "__main__":
+    chat_bot_builder = ChatBotBuilder()
+    chat_bot = chat_bot_builder.build_chatbot()
+    print(chat_bot.query("What is the tallest building in NYC?"))
