@@ -46,7 +46,7 @@ def check_file_exists(relative_file_path):
     pass
 
 def construct_classifier(classifier_identifier, is_reset_classifiers):
-    default_relative_path = '../PickleFiles/{sentiment}_sentiment.pickle'
+    default_relative_path = './PickleFiles/{sentiment}_sentiment.pickle'
     relative_path = default_relative_path.format(sentiment = classifier_identifier)
     with open(relative_path, 'rb') as pickle_file:
         classifier = pickle.load(pickle_file)
